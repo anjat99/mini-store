@@ -4,9 +4,16 @@ const modalTriggers = document.querySelectorAll('.popup-trigger')
 const bodyBlackout = document.querySelector('.body-blackout')
 const popup = document.querySelector(".popup-modal");
 const buttonCart = document.querySelector('#cart-icon');
+var burgerMenu = document.getElementById('burger-menu');
+var overlay = document.getElementById('menu');
 const data = {};
 
 window.addEventListener('DOMContentLoaded', () => {
+    burgerMenu.addEventListener('click',function(){
+        this.classList.toggle("close");
+        overlay.classList.toggle("overlay");
+    });
+
     data.cart = getLocalStorageItem("cart");
 
     if (!data.cart){

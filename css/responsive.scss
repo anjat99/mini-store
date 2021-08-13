@@ -25,6 +25,23 @@
         justify-content: center;
         align-items:center;
     }
+    #burger-menu{
+        display: block;
+    }
+    #navBar{
+        display: none!important;
+        
+    }
+    #logo{
+        display: block!important;
+    }
+    .badge-cart{
+        right: 14rem;
+        top: 33%;
+        outline: none;
+        border: none;
+        background: transparent;
+    }
 }
 
 
