@@ -182,7 +182,8 @@ function showCart(){
     showCartTotal();
     
     $(".remove-cart-item").click(function(){
-        removeCartProduct(Number($(this).data("product")));
+        let product = this.dataset.product;
+        removeCartProduct(Number(product));
         $(this).parent().parent().fadeOut(300, showCart);
     });    
 }
