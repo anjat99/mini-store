@@ -4,8 +4,8 @@ const modalTriggers = document.querySelectorAll('.popup-trigger')
 const bodyBlackout = document.querySelector('.body-blackout')
 const popup = document.querySelector(".popup-modal");
 const buttonCart = document.querySelector('#cart-icon');
-var burgerMenu = document.getElementById('burger-menu');
-var overlay = document.getElementById('menu');
+var burgerMenu = document.getElementById('hamburger_icon');
+var overlay = document.getElementById('mobile__menu');
 const data = {};
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -86,7 +86,7 @@ function printProducts(products){
                         </p>
                     </div>
                     <div class="addToCart">
-                        <a href="#"  class="btn btn-dark add-to-cart-btn add-to-cart" data-id="${product.id}" data-price="${product.price}">
+                        <a href="#!"  class="btn btn-dark add-to-cart-btn add-to-cart" data-id="${product.id}" data-price="${product.price}">
                             Add to Cart
                         </a>
                     </div>
