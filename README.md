@@ -4,7 +4,7 @@
 
 ## About Project
 
-A simple online mini-store built using HTML, SASS (CSS3), VANILLA JS, BOOTSTRAP.
+A simple online mini-store built using HTML, SASS/SCSS (CSS3), VANILLA JS, BOOTSTRAP.
 
 ## Features
 <ul>
