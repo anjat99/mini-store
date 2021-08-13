@@ -210,13 +210,12 @@ function getItemByID(array, ID){
     return array.find(el => el.id == ID);
 }
 
-function createSidebarContent(array, type){
+function createSidebarContent(array){
     let html = "";
 
-    let cart = type == "cart";
         if(array && array.length > 0){
             for(i in array){
-                let product = cart ? getItemByID(data.products, array[i].id) : getItemByID(data.products, array[i]);
+                let product = getItemByID(data.products, array[i].id);
 
                 html += `<div class="cart__product p-2">
                             <div class="cart__product__up d-flex justify-content-between align-items-start p-2" data-product="${product.id}">
@@ -233,11 +232,8 @@ function createSidebarContent(array, type){
                                 <div class="details__name">
                                     <p>${product.name}</p>
                                 </div>`
-                               
-                                if(cart){
-                                    html += getSidebarCartItemControls(product, i);
-                                }
-
+                       
+                html += getCartItemDetails(product, i);
                 html+=`</div></div>`;
             }
         }
@@ -246,7 +242,7 @@ function createSidebarContent(array, type){
 }
 
 //CART ITEMS
-function getSidebarCartItemControls(product, index){
+function getCartItemDetails(product, index){
     let price = product.price * Number(data.cart[index].quantity);
 
     return ` <div class="details__quantity">
