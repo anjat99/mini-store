@@ -213,7 +213,6 @@ function getItemByID(array, ID){
 
 function createCartContent(array){
     let html = "";
-
         if(array && array.length > 0){
             for(i in array){
                 let product = getItemByID(data.products, array[i].id);
