@@ -7,13 +7,9 @@ const bodyBlackout = document.querySelector('.body-blackout')
 const buttonCart = $('#cart-icon');
 const data = {};
 
-
 window.addEventListener('DOMContentLoaded', () => {
-    
-
     data.cart = getLocalStorageItem("cart");
     refreshBadge();
-
     loadProducts();
 
     modalTriggers.forEach(trigger => {
@@ -59,7 +55,6 @@ function loadProducts(){
     })
 }
 
-
 function printProducts(products){
     data.products = products;
     let output = '';
@@ -92,7 +87,7 @@ function printProducts(products){
     productList.innerHTML = output;
 }
 
-//OBRADA LOCAL STORAGE
+//SESSION STORAGE
 function getLocalStorageItem(name){
     let item = sessionStorage.getItem(name);
     if(item){
@@ -151,21 +146,18 @@ function removeCartProduct(productID){
 
 function bindAddToCartButton(){
     $(".add-to-cart").click(function(){
-        // console.log(this);
-       
-        setCartProduct(Number($(this).data("id")), 1, true, Number($(this).data("price")));
+    setCartProduct(Number($(this).data("id")), 1, true, Number($(this).data("price")));
 
-        alert("Successfully added to cart.");
-        buttonCart.prop('disabled', false);
+    alert("Successfully added to cart.");
+    buttonCart.prop('disabled', false);
     });
 }
 
 function showCartItems(htmlContent){
     $("#cart__products").html(htmlContent);
 }
+
 function showCart(){
-    // console.log('showed cart')
-    // console.log(data.cart)  
     let html = createSidebarContent(data.cart, "cart");
 
     showCartItems(html);
@@ -176,12 +168,11 @@ function showCart(){
         $(this).parent().parent().fadeOut(300, showCart);
     });
 }
+
 function showCartTotal(){
     if(data.cart && data.cart.length > 0){
         let total = 0;
         $(data.cart).each(function(){
-            // console.log(this.quantity)
-            // console.log(price)
             // console.log(this)
             total += this.priceProd * this.quantity;
             console.log(total)
@@ -200,17 +191,13 @@ function showCartTotal(){
 function getItemByID(array, ID){
     return array.find(el => el.id == ID);
 }
+
 function createSidebarContent(array, type){
-    // console.log(array)
-    // console.log(type)
-    // console.log(data)
-    // console.log(data.products)
     let html = "";
 
     let cart = type == "cart";
         if(array && array.length > 0){
             for(i in array){
-                // let idOfProd = array.find(el => el.id == array[i].id);
                 let product = cart ? getItemByID(data.products, array[i].id) : getItemByID(data.products, array[i]);
 
                 html += `<div class="cart__product p-2">
@@ -232,16 +219,15 @@ function createSidebarContent(array, type){
                                 if(cart){
                                     html += getSidebarCartItemControls(product, i);
                                 }
+
                 html+=`</div></div>`;
             }
         }
-        // else {
-        //     document.getElementById('cart-icon').disabled = true;
-        // }
+
         return html;
 }
 
-//KORPA
+//CART ITEMS
 function getSidebarCartItemControls(product, index){
     let price = product.price * Number(data.cart[index].quantity);
 
@@ -251,8 +237,7 @@ function getSidebarCartItemControls(product, index){
             <div class="details__price">
                 ${formatPrice(price)}
             </div>`;
-   }
-
+}
 
 function formatPrice(price){
     return price.toLocaleString("en-US",{style: 'currency', currency: 'USD'});
