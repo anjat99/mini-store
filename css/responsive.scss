@@ -1,0 +1,33 @@
+@media screen and (max-width: 1024px){ 
+    #products__list{
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .product {
+        &:not(:last-child){
+            margin-right: 0;
+        }
+        &:first-child{
+            width: 100%;
+            margin-bottom: 15px;
+        }
+    }
+}
+
+@media screen and (max-width: 768px){
+    .product {
+        &:not(:last-child){
+            margin-bottom: 15px;
+        }
+    }
+    #footer__networks{
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+    }
+}
+
+
+@media screen and (max-width: 425px){
+   
+}
