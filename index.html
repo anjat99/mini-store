@@ -12,8 +12,6 @@
      <meta name="keywords" content="online shopping store" />
      <meta name="author" content="mailto:anja&#46;tomic099&#64;gmail&#46;com" />
      <meta name="language" content="english" />
-     <!-- Font Awesome -->
-     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
      <!-- Bootstrap -->
      <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
      <!-- CSS files -->
@@ -21,7 +19,6 @@
     <link rel="stylesheet" href="css/responsive.css" type="text/css" />
 </head>
 <body>
-
     <!-- #region HEADER - LOGO, NAVIGATION -->
     <header class="container-fluid" id="header">
         <div class="container d-flex align-items-center">
@@ -42,9 +39,9 @@
                         <a href="#store">Store</a>
                     </li>
                     <li>
-                        <button type="button" id="cart-icon" data-popup-trigger="cart" class="popup-trigger">
+                        <button type="button" id="cart-icon" data-popup-trigger="cart" class="popup-trigger" disabled>
                             <img src="img/empty-cart.png" alt="cart-icon">
-                            <span class="badge badge-cart position-absolute">2</span>
+                            <span class="badge badge-cart position-absolute">0</span>
                         </button> 
                     </li>
                 </ul>
@@ -71,83 +68,10 @@
      <div class="body-blackout"></div>
      <div class="popup-modal shadow" data-popup-modal="cart">
         <div id="cart__products">
-            <div class="cart__product p-2">
-                <div class="cart__product__up d-flex justify-content-between align-items-start p-2">
-                    <div class="cart__product__image">
-                        <img src="img/glasses.png" alt="glasses-icon" class="img-fluid">
-                    </div>
-                    <div class="cart__product__remove">
-                        <a href="#">
-                            Remove
-                        </a>
-                    </div>
-                </div>
-                <div class="cart__product__details d-flex justify-content-between ">
-                    <div class="details__name">
-                        <p>Pilot Aviator Glasses</p>
-                    </div>
-                    <div class="details__quantity">
-                        (4)
-                    </div>
-                    <div class="details__price">
-                        $45
-                    </div>
-                </div>
-            </div>
-            <div class="cart__product p-2">
-                <div class="cart__product__up d-flex justify-content-between align-items-start p-2">
-                    <div class="cart__product__image">
-                        <img src="img/hats.png" alt="glasses-icon" class="img-fluid">
-                    </div>
-                    <div class="cart__product__remove">
-                        <a href="#">
-                            Remove
-                        </a>
-                    </div>
-                </div>
-                <div class="cart__product__details d-flex justify-content-between ">
-                    <div class="details__name">
-                        <p>Command Hats</p>
-                    </div>
-                    <div class="details__quantity">
-                        (2)
-                    </div>
-                    <div class="details__price">
-                        $15
-                    </div>
-                </div>
-            </div>
-            <div class="cart__product p-2">
-                <div class="cart__product__up d-flex justify-content-between align-items-start p-2">
-                    <div class="cart__product__image">
-                        <img src="img/shirts.png" alt="glasses-icon" class="img-fluid">
-                    </div>
-                    <div class="cart__product__remove">
-                        <a href="#">
-                            Remove
-                        </a>
-                    </div>
-                </div>
-                <div class="cart__product__details d-flex justify-content-between ">
-                    <div class="details__name">
-                        <p>Mission T-Shirt</p>
-                    </div>
-                    <div class="details__quantity">
-                        (1)
-                    </div>
-                    <div class="details__price">
-                        $25
-                    </div>
-                </div>
-            </div>
+            <!-- PRODUCTS ADDED TO CART -->
         </div>
         <div id="total__price" class="border-top border-dark d-flex justify-content-between ">
-            <div id="total__price__heading">
-                <p>Total:</p>
-            </div>
-            <div id="total__price__value">
-                $45
-            </div>
+           <!-- TOTAL PRICE OF CART PRODUCTS -->
         </div>
     </div>
     <!-- #endregion -->
@@ -297,8 +221,6 @@
             </nav>
         </div>
     </footer>
-
-  
 
     <!-- JS files -->
     <!-- Bootstrap -->

@@ -124,8 +124,8 @@ img {
   min-height: auto;
   background-color: white;
   position: absolute;
-  right: 1%;
-  top: 45%;
+  right: 3%;
+  top: 30%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   padding: 20px;
