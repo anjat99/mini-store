@@ -176,7 +176,7 @@ function showCartItems(htmlContent){
 }
 
 function showCart(){
-    let html = createSidebarContent(data.cart, "cart");
+    let html = createCartContent(data.cart);
 
     showCartItems(html);
     showCartTotal();
@@ -210,7 +210,7 @@ function getItemByID(array, ID){
     return array.find(el => el.id == ID);
 }
 
-function createSidebarContent(array){
+function createCartContent(array){
     let html = "";
 
         if(array && array.length > 0){
