@@ -1,14 +1,17 @@
 // variables and constants
 const productList = document.querySelector('#products__list');
-
 const modalTriggers = document.querySelectorAll('.popup-trigger')
 const bodyBlackout = document.querySelector('.body-blackout')
-// const buttonCart = document.querySelector('#cart-icon');
-const buttonCart = $('#cart-icon');
+const popup = document.querySelector(".popup-modal");
+const buttonCart = document.querySelector('#cart-icon');
 const data = {};
 
 window.addEventListener('DOMContentLoaded', () => {
     data.cart = getLocalStorageItem("cart");
+
+    if (!data.cart){
+        buttonCart.disabled = true;
+    } 
     refreshBadge();
     loadProducts();
 
@@ -32,12 +35,12 @@ window.addEventListener('DOMContentLoaded', () => {
     // console.log(data.cart)
     // console.log(data.cart.length)
 
-    $('#cart-icon').on('click', showCart);
+    document.getElementById("cart-icon").addEventListener("click", showCart);
     
 });
 
 function refreshBadge(){
-    $("#cart-icon .badge-cart").text(data.cart.length ? Number(data.cart.length) : "0");
+    document.querySelector("#cart-icon .badge-cart").textContent = data.cart.length ? Number(data.cart.length) : "0";
 }
 
 // load product items content from JSON file
@@ -87,9 +90,9 @@ function printProducts(products){
     productList.innerHTML = output;
 }
 
-//SESSION STORAGE
+//LOCAL STORAGE
 function getLocalStorageItem(name){
-    let item = sessionStorage.getItem(name);
+    let item = localStorage.getItem(name);
     if(item){
         parsedItem = JSON.parse(item);
         if(parsedItem.length > 0){
@@ -98,13 +101,7 @@ function getLocalStorageItem(name){
     }
     return false;
 }
-
-function removeLocalStorageItem(name){
-    data[name] = [];
-    sessionStorage.removeItem(name);
-    refreshBadge();
-}    
-
+   
 function getCartProductIndexByID(id){
     let productIndex = -1;
     data.cart.find((el,ind)=>{
@@ -133,28 +130,49 @@ function setCartProduct(productID, quantity, add = false, priceProd){
         data.cart = [{"id": productID, "quantity": quantity, "priceProd": priceProd}];
     }
 
-    sessionStorage.setItem("cart", JSON.stringify(data.cart));
+    localStorage.setItem("cart", JSON.stringify(data.cart));
+
     refreshBadge();
-    buttonCart.prop('disabled', false);
+    buttonCart.disabled = false;
 }
 
 function removeCartProduct(productID){
-    data.cart.splice(getCartProductIndexByID(productID), 1);
-    sessionStorage.setItem("cart",JSON.stringify(data.cart));
+    let index = getCartProductIndexByID(productID)
+    let prod = data.cart[index];
+    let quantity = prod.quantity;
+    if(quantity > 1){
+        prod.quantity--;
+        localStorage.setItem("cart",JSON.stringify(data.cart));
+        showCart();
+    }else{
+        data.cart.splice(getCartProductIndexByID(productID), 1);
+        localStorage.setItem("cart",JSON.stringify(data.cart));
+        
+            if (popup.classList.contains("is--visible")) {
+                popup.classList.remove('is--visible');
+            }
+    }
+
     refreshBadge();
 }
 
 function bindAddToCartButton(){
     $(".add-to-cart").click(function(){
-    setCartProduct(Number($(this).data("id")), 1, true, Number($(this).data("price")));
+        let id = this.dataset.id;
+        let priceVal = this.dataset.price;
+        // console.log("Id: " + id + ",price: " + priceVal);
+        setCartProduct(Number(id), 1, true, Number(priceVal));
 
-    alert("Successfully added to cart.");
-    buttonCart.prop('disabled', false);
+        alert("Successfully added to cart.");
+        buttonCart.disabled = false;
+        if (popup.classList.contains("is--visible")) {
+            popup.classList.remove('is--visible')
+        }
     });
 }
 
 function showCartItems(htmlContent){
-    $("#cart__products").html(htmlContent);
+    document.querySelector("#cart__products").innerHTML = htmlContent;
 }
 
 function showCart(){
@@ -164,9 +182,9 @@ function showCart(){
     showCartTotal();
     
     $(".remove-cart-item").click(function(){
-        removeCartProduct(Number($(this).data("product-id")));
+        removeCartProduct(Number($(this).data("product")));
         $(this).parent().parent().fadeOut(300, showCart);
-    });
+    });    
 }
 
 function showCartTotal(){
@@ -201,12 +219,12 @@ function createSidebarContent(array, type){
                 let product = cart ? getItemByID(data.products, array[i].id) : getItemByID(data.products, array[i]);
 
                 html += `<div class="cart__product p-2">
-                            <div class="cart__product__up d-flex justify-content-between align-items-start p-2" data-product-id="${product.id}">
+                            <div class="cart__product__up d-flex justify-content-between align-items-start p-2" data-product="${product.id}">
                                 <div class="cart__product__image">
                                     <img src="${product.imageUrl}" alt="glasses-icon" class="img-fluid">
                                 </div>
                                 <div class="cart__product__remove">
-                                    <a href="#" class="remove-cart-item" data-product-id="${product.id}">
+                                    <a href="#" class="remove-cart-item" data-product="${product.id}">
                                         Remove
                                     </a>
                                 </div>
