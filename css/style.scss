@@ -1,0 +1,229 @@
+/* #region VARIABLES */
+$white: #ffffff;
+$black: #000000;
+$lightGrey:#e8f1f8;
+$cherry: #a01441;
+$grey: #6f6f6f;
+$lightGreen:  #17c1a4;
+$green:#119d83;
+$lightOrange: #ffdc98;
+$orange: #e9c680;
+$darkBlue: #334a8e;
+$lightBlue:  #3bb5e5;
+
+/*#endregion */
+
+/* #region FONTS */
+@font-face {
+	font-family: fontStyleRegular;
+	src: url('../fonts/Titillium_Web/TitilliumWeb-Regular.ttf');
+}
+@font-face {
+	font-family: fontStyleBold;
+	src: url('../fonts/Titillium_Web/TitilliumWeb-Bold.ttf');
+}
+@font-face {
+	font-family: fontStyleSemiBold;
+	src: url('../fonts/Titillium_Web/TitilliumWeb-SemiBold.ttf');
+}
+@mixin styleDimensions ($width,$height) {
+    width: $width;
+    height: $height;
+}
+/*#endregion */
+
+/* #region BASE SETTINGS */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    scroll-behavior: smooth;
+    font-family: 'fontStyleRegular';
+}
+a{
+    text-decoration: none;
+    &:hover{
+        text-decoration: none;
+    }
+}
+ul{
+    list-style-type: none;
+}
+img{
+	vertical-align:bottom;
+	max-width:100%;
+}
+/*#endregion */
+
+
+/* #region HEADER- logo+navigation+heading */
+#header{
+    background: $lightGrey;
+    padding:20px;
+}
+#navBar > li{
+    padding: 10px;
+    border-radius:5%;
+    -webkit-border-radius:5%;
+    -moz-border-radius:5%;
+    -ms-border-radius:5%;
+    -o-border-radius:5%;
+    &:hover, &.active{
+        background: $cherry;
+        &:last-of-type{
+            background:transparent;
+            & a {
+                padding: 0;
+            }
+        }
+        & > a{
+            color:$white;
+        }
+    }
+    &> a{
+        color: $black;
+        text-transform: uppercase;
+    }
+}
+.badge-cart{
+    background: $cherry;
+    color: $white;
+    border-radius: .5rem;
+    top: 0.3rem;
+    right: 1.7rem;
+}
+.jumbotron-heading{
+    background:transparent;
+}
+#heading{
+    h1{
+        color: $grey;
+        font-family: 'fontStyleSemiBold';
+    }
+}
+.btnWork-danger{
+    background: $cherry;
+    color: $white;
+    text-transform: uppercase;
+}
+/*#endregion */
+
+
+/* #region SERVICES section */
+#services{
+    background:$lightGreen;
+    padding: 5%;
+}
+.line{
+    width: 10%;
+    height: 2px;
+}
+#services__line{
+    border-top: 2px solid $green;
+}
+.heading__title{
+    text-transform: uppercase;
+   h2{
+     font: {
+        family: 'fontStyleSemiBold';
+        weight:bold
+    }
+   }
+}
+#services__title, #services__subtitle{
+    color: $white;
+}
+.service__details, .product__details {
+    text-align: center;
+    height: 150px;
+}
+.service__name{
+    padding-top: 20px;
+    h3{
+        font: {
+            family: 'fontStyleSemiBold';
+            weight:bold
+        }
+        color: $white;
+        text-transform: uppercase;
+    }
+}
+.service__icon{
+    padding: 20px;
+}
+   
+.service__description{
+    padding: 0px 20px 20px 20px;
+    p{
+        color: $white;
+        text-align: center;
+    }
+}
+
+/*#endregion */
+
+
+/* #region OUR STORE section */
+#store{
+    background: $lightOrange;
+    padding: 5%;
+}
+#store__line{
+    border-top: 2px solid $orange;
+}
+#store__title, #store__subtitle{
+    color: $black;
+}
+.product__price{
+    padding: 0px 20px 20px 20px;
+    text-align: center;
+    p{
+        font: {
+            family: 'fontStyleSemiBold';
+            weight:bold;
+            size: 1.5rem;
+        }
+    }
+}
+.product__details{
+    height: 180px;
+}
+.product__icon{
+    height: 300px;
+}
+.product {
+    border: 8px solid #343a40!important;
+    &:not(:last-child){
+        margin-right: 15px;
+    }
+}
+.product__name{
+    padding-top: 20px;
+    h3{
+        font: {
+            family: 'fontStyleSemiBold';
+            weight:bold
+        }
+        
+    }
+}
+/*#endregion */
+
+
+
+/* #region FOOTER section */
+#footer{
+    background:$darkBlue;
+    padding: 20px;
+}
+#footer__networks > li > a {
+    color: $white;
+    font: {
+        family: 'fontStyleSemiBold';
+        weight:bold
+    }
+    &:hover{
+        color:$lightBlue;
+    }
+}
+/*#endregion */
