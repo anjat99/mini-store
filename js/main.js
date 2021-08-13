@@ -1,8 +1,28 @@
 // variables and constants
 const productList = document.querySelector('#products__list');
 
+const modalTriggers = document.querySelectorAll('.popup-trigger')
+const bodyBlackout = document.querySelector('.body-blackout')
+
 window.addEventListener('DOMContentLoaded', () => {
     loadProducts();
+
+    modalTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const { popupTrigger } = trigger.dataset
+          const popupModal = document.querySelector(`[data-popup-modal="${popupTrigger}"]`)
+      
+          popupModal.classList.add('is--visible')
+          bodyBlackout.classList.add('is-blacked-out')
+                    
+          bodyBlackout.addEventListener('click', () => {
+            //close modal
+            popupModal.classList.remove('is--visible')
+            bodyBlackout.classList.remove('is-blacked-out')
+          })
+        })
+    })
+      
 });
 
 
@@ -40,9 +60,9 @@ function printProducts(products){
                         </p>
                     </div>
                     <div class="addToCart">
-                        <button type="button" class="btn btn-dark add-to-cart-btn" data-id="${product.id}">
+                        <a href="#" class="btn btn-dark add-to-cart-btn" data-id="${product.id}">
                             Add to Cart
-                        </button>
+                        </a>
                     </div>
                 </div>
             </article>
@@ -50,3 +70,7 @@ function printProducts(products){
     });
     productList.innerHTML = output;
 }
+
+
+
+
