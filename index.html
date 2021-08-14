@@ -21,7 +21,7 @@
 <body>
     <!-- #region HEADER - LOGO, NAVIGATION -->
     <header class="container-fluid" id="header">
-        <div class="container d-flex align-items-center">
+        <div class="container d-flex align-items-center" id="header__mobile">
             <div id="logo" class="col-lg-7 d-flex justify-content-start ml-5">
                 <a href="#" class="col-lg-3 ml-5">
                     <img src="img/msg-digital-logo.png" alt="msg-digital logo" class="img-fluid">
@@ -66,9 +66,9 @@
                     <a href="#store">Store</a>
                 </li>
                 <li>
-                    <button type="button" id="cart-icon" data-popup-trigger="cart" class="popup-trigger">
+                    <button type="button" id="cart-icon-mobile" data-popup-trigger="cart-mobile" class="popup-trigger">
                         <img src="img/empty-cart.png" alt="cart-icon">
-                        <span class="badge badge-cart position-absolute">0</span>
+                        <span class="badge badge-cart mobile position-absolute">0</span>
                     </button> 
                 </li>
             </ul>
@@ -93,6 +93,14 @@
      <!-- #region CART MODAL -->
      <div class="body-blackout"></div>
      <div class="popup-modal shadow" data-popup-modal="cart">
+        <div id="cart__products">
+            <!-- PRODUCTS ADDED TO CART -->
+        </div>
+        <div id="total__price" class="border-top border-dark d-flex justify-content-between ">
+           <!-- TOTAL PRICE OF CART PRODUCTS -->
+        </div>
+    </div>
+    <div class="popup-modal mobile-modal shadow" data-popup-modal="cart-mobile">
         <div id="cart__products">
             <!-- PRODUCTS ADDED TO CART -->
         </div>

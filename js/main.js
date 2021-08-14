@@ -3,7 +3,9 @@ const productList = document.querySelector('#products__list');
 const modalTriggers = document.querySelectorAll('.popup-trigger')
 const bodyBlackout = document.querySelector('.body-blackout')
 const popup = document.querySelector(".popup-modal");
+const popupMobile = document.querySelector(".mobile-modal");
 const buttonCart = document.querySelector('#cart-icon');
+const buttonCartMobile = document.querySelector('#cart-icon-mobile');
 var burgerMenu = document.getElementById('hamburger_icon');
 var overlay = document.getElementById('mobile__menu');
 const data = {};
@@ -14,10 +16,12 @@ window.addEventListener('DOMContentLoaded', () => {
         overlay.classList.toggle("overlay");
     });
 
+
     data.cart = getLocalStorageItem("cart");
 
     if (!data.cart){
         buttonCart.disabled = true;
+        buttonCartMobile.disabled = true;
     } 
     refreshBadge();
     loadProducts();
@@ -43,11 +47,13 @@ window.addEventListener('DOMContentLoaded', () => {
     // console.log(data.cart.length)
 
     document.getElementById("cart-icon").addEventListener("click", showCart);
+    document.getElementById("cart-icon-mobile").addEventListener("click", showCart);
     
 });
 
 function refreshBadge(){
     document.querySelector("#cart-icon .badge-cart").textContent = data.cart.length ? Number(data.cart.length) : "0";
+    document.querySelector("#cart-icon-mobile .badge-cart").textContent = data.cart.length ? Number(data.cart.length) : "0";
 }
 
 // load product items content from JSON file
@@ -141,6 +147,7 @@ function setCartProduct(productID, quantity, add = false, priceProd){
 
     refreshBadge();
     buttonCart.disabled = false;
+    buttonCartMobile.disabled = false;
 }
 
 function removeCartProduct(productID){
@@ -155,8 +162,9 @@ function removeCartProduct(productID){
         data.cart.splice(getCartProductIndexByID(productID), 1);
         localStorage.setItem("cart",JSON.stringify(data.cart));
         
-            if (popup.classList.contains("is--visible")) {
+            if (popup.classList.contains("is--visible") || popupMobile.classList.contains("is--visible")) {
                 popup.classList.remove('is--visible');
+                popupMobile.classList.remove("is--visible")
             }
     }
 
@@ -172,8 +180,10 @@ function bindAddToCartButton(){
 
         alert("Successfully added to cart.");
         buttonCart.disabled = false;
-        if (popup.classList.contains("is--visible")) {
-            popup.classList.remove('is--visible')
+        buttonCartMobile.disabled = false;
+        if (popup.classList.contains("is--visible") || popupMobile.classList.contains("is--visible")) {
+            popup.classList.remove('is--visible');
+            popupMobile.classList.remove("is--visible")
         }
     });
 }

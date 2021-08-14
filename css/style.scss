@@ -94,8 +94,10 @@ img{
     width: 27px;
     margin: 50px;
     overflow: visible;
-    position: relative;
-    z-index:2;
+    position: fixed;
+    z-index: 2;
+    top: 1px;
+    right: 1px;
 
     & span, & span::before, & span::after{
         background: rgb(0, 0, 0);
@@ -176,6 +178,7 @@ img{
         font-size: 32px;
         margin-bottom:30px;
         text-decoration:none;
+        text-transform: uppercase;
       }
     
 }
@@ -187,7 +190,7 @@ img{
     top: 0.3rem;
     right: 1.7rem;
 }
-#cart-icon{
+#cart-icon, #cart-icon-mobile{
     border:none;
     outline: none;
     &:active, &:focus{

@@ -34,17 +34,52 @@
     }
     #logo{
         display: block!important;
+        margin-left: -30% !important;
+        margin-right: 60%;
+    }
+    #cart-icon-mobile{
+       background:transparent;
+    }
+    #header__mobile {
+        justify-content: space-between;
     }
     .badge-cart{
         right: 14rem;
         top: 33%;
         outline: none;
         border: none;
-        background: transparent;
+    }
+    .mobile {
+        right: 47%;
+        top: 33.5%;
     }
 }
 
 
-@media screen and (max-width: 425px){
-   
+@media screen and (max-width: 415px){
+    .mobile {
+        right: 45%;
+        top: 45%;
+    }
+}
+@media screen and (max-width: 375px){
+    .mobile {
+        right: 44%;
+        top: 49%;
+    }
+}
+@media screen and (max-width: 360px){
+    .mobile {
+        right: 45%;
+        top: 51.5%;
+    }
+    #services__title, #services__subtitle{
+        text-align: center;
+    }
+}
+@media screen and (max-width: 320px){
+    .mobile {
+        right: 44%;
+        top: 58%;
+    }
 }

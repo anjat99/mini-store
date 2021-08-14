@@ -89,8 +89,10 @@ img {
   width: 27px;
   margin: 50px;
   overflow: visible;
-  position: relative;
+  position: fixed;
   z-index: 2;
+  top: 1px;
+  right: 1px;
 }
 
 #hamburger_icon span, #hamburger_icon span::before, #hamburger_icon span::after {
@@ -181,6 +183,7 @@ img {
   font-size: 32px;
   margin-bottom: 30px;
   text-decoration: none;
+  text-transform: uppercase;
 }
 
 .badge-cart {
@@ -191,12 +194,12 @@ img {
   right: 1.7rem;
 }
 
-#cart-icon {
+#cart-icon, #cart-icon-mobile {
   border: none;
   outline: none;
 }
 
-#cart-icon:active, #cart-icon:focus {
+#cart-icon:active, #cart-icon:focus, #cart-icon-mobile:active, #cart-icon-mobile:focus {
   border: none;
   outline: none;
 }
