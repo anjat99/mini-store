@@ -21,7 +21,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     if (!data.cart){
         buttonCart.disabled = true;
-        buttonCartMobile.disabled = true;
     } 
     refreshBadge();
     loadProducts();
@@ -189,7 +188,11 @@ function bindAddToCartButton(){
 }
 
 function showCartItems(htmlContent){
-    document.querySelector("#cart__products").innerHTML = htmlContent;
+    let cartProds = document.querySelectorAll(".cart__products");
+    for (let cart = 0; cart < cartProds.length; cart++) {
+        cartProds[cart].innerHTML = htmlContent;
+        
+    }
 }
 
 function showCart(){
@@ -214,13 +217,16 @@ function showCartTotal(){
             console.log(total)
         });
 
-        $("#total__price").html(`<div id="total__price__heading">
-                                        <p>Total:</p>
-                                    </div>
-                                    <div id="total__price__value">
-                                        ${formatPrice(total)}
-                                    </div>`);
-    
+        let totalPrices = document.querySelectorAll(".total__price");
+        let html = `<div class="total__price__heading">
+                        <p>Total:</p>
+                    </div>
+                    <div class="total__price__value">
+                        ${formatPrice(total)}
+                    </div>`;
+        for (let t = 0; t < totalPrices.length; t++) {
+            totalPrices[t].innerHTML = html;
+        }
     }
 }
    
@@ -240,7 +246,7 @@ function createCartContent(array){
                                     <img src="${product.imageUrl}" alt="glasses-icon" class="img-fluid">
                                 </div>
                                 <div class="cart__product__remove">
-                                    <a href="#" class="remove-cart-item" data-product="${product.id}">
+                                    <a href="#!" class="remove-cart-item" data-product="${product.id}">
                                         Remove
                                     </a>
                                 </div>
